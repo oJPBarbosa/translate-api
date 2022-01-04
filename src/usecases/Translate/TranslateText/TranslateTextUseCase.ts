@@ -32,7 +32,7 @@ export class TranslateTextUseCase {
 
     try {
       browser = await this.scraperProvider.getBrowser();
-      page = await this.scraperProvider.getScraper(browser);
+      page = await this.scraperProvider.getPage(browser);
     } catch (err) {
       throw new ExecuteError({
         _message: {

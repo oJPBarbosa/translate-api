@@ -13,7 +13,7 @@ export class PuppeteerScraperProvider implements IScraperProvider {
     return browser;
   }
 
-  async getScraper(browser: Browser): Promise<Page> {
+  async getPage(browser: Browser): Promise<Page> {
     const page: Page = await browser.newPage();
 
     return page;
