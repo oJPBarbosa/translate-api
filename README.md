@@ -80,19 +80,19 @@ axios.post('http://translate.api.jpfb.me', {
 	.then((response) => {
 		console.log(response.data);
 	})
-	.catch((error) => {
-		console.log(error);
+	.catch((err) => {
+		console.log(err);
 	});
 ```
 ### Response Example
 
 ```json
 {
-	"translation": {
-		"language": "en",
-		"texts": {
-			"phrase": "Hello world!"
-		}
+  "translation": {
+    "language": "en",
+    "texts": {
+      "phrase": "Hello world!"
+    }
   }
 }
 ```
