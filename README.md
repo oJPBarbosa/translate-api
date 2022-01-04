@@ -17,7 +17,7 @@
 
 ## 🎯 About
 
-A simple yet very useful S.O.L.I.D. principle-based web scraper API using [DeepL Translate](https://www.deepl.com/) and extending its capacities.
+A simple yet very useful S.O.L.I.D. principles-based web scraper API using [DeepL Translate](https://www.deepl.com/) and extending its capacities.
 
 <details>
   <summary>🌐 Supported Languages</summary>
