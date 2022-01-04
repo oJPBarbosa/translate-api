@@ -51,7 +51,7 @@ A simple yet very useful S.O.L.I.D. principles-based web scraper API using [Deep
 
 ## 🙋 Usage
 
-📜 Check [languages.ts](https://github.com/oJPBarbosa/translate-api/blob/main/src/utils/languages.ts) for the ISO 639-1 standard language codes.
+📜 Check [languages.ts](https://github.com/oJPBarbosa/translate-api/blob/main/src/utils/languages.ts) for the [ISO 639-1 standard language codes](https://wikipedia.org/wiki/List_of_ISO_639-1_codes).
 
 ### Request Example
 
