@@ -21,6 +21,7 @@ A simple yet very useful S.O.L.I.D. principle-based web scraper API using [DeepL
 
 <details>
   <summary>🌐 Supported Languages</summary>
+  <br>
   
   - 🇧🇬 Bulgarian
   - 🇨🇳 Chinese
