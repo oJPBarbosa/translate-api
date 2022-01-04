@@ -109,4 +109,4 @@ A project made by [João Pedro Ferreira Barbosa](https://github.com/oJPBarbosa).
 
 ## 🌎 License
 
-This project in under MIT license. Check [LICENSE](https://github.com/oJPBarbosa/translate-api/LICENSE) for more information.
+This project in under MIT license. Check [LICENSE](https://github.com/oJPBarbosa/translate-api/blob/main/LICENSE) for more information.
