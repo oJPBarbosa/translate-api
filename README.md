@@ -69,20 +69,20 @@ curl -X POST http://translate.api.jpfb.me
 const axios = require('axios');
 
 axios.post('http://translate.api.jpfb.me', {
-	language: {
-		source: 'pt',
-		target: 'en',
-	},
-	texts: {
-		phrase: 'Olá mundo!',
-	},
+  language: {
+    source: 'pt',
+    target: 'en',
+  },
+  texts: {
+  phrase: 'Olá mundo!',
+  },
 })
-	.then((response) => {
-		console.log(response.data);
-	})
-	.catch((err) => {
-		console.log(err);
-	});
+.then((response) => {
+  console.log(response.data);
+})
+.catch((err) => {
+  console.log(err);
+});
 ```
 ### Response Example
 
