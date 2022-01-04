@@ -11,14 +11,14 @@ export class TranslateTextUseCase {
 
   async execute(data: TranslateTextRequestDTO): Promise<object> {
     const { language, texts } = data;
-    let { source, target } = language;
+    const { source, target } = language;
 
     if (!languages.includes(source) || !languages.includes(target)) {
       throw new ExecuteError({
         _message: {
           key: 'error',
           value: 
-          `Invalid ${languages.includes(source) ? 'target' : 'source'} language code.`,
+          `Invalid ${languages.includes(source) ? 'target' : 'source'} language.`,
         },
         status: 400,
       });

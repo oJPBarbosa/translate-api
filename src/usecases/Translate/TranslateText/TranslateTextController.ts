@@ -7,14 +7,13 @@ export class TranslateTextController {
   ) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { source, target, texts } = request.body;
+    const { language, texts } = request.body;
+
+    console.log(request.body);
 
     try {
       const translation: object = await this.translateTextUseCase.execute({ 
-        language: {
-          source,
-          target,
-        },
+        language,
         texts,
       });
 
