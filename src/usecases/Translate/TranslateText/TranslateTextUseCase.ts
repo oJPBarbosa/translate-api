@@ -34,7 +34,6 @@ export class TranslateTextUseCase {
       browser = await this.scraperProvider.getBrowser();
       page = await this.scraperProvider.getScraper(browser);
     } catch (err) {
-      console.log(err);
       throw new ExecuteError({
         _message: {
           key: 'error',
