@@ -10,11 +10,14 @@
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/oJPBarbosa/translate-api.svg">
   </a>
   <img alt="GitHub" src="https://img.shields.io/github/license/oJPBarbosa/translate-api.svg">
+  <a href="https://www.codacy.com/gh/oJPBarbosa/translate-api/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=oJPBarbosa/translate-api&amp;utm_campaign=Badge_Grade">
+    <img alt="Codacy Badge" src="https://app.codacy.com/project/badge/Grade/55d75bb0bc9449c88c395ffc72cfa485">
+  </a>
 </p>
 
 ## 🎯 About
 
-A simple yet very useful S.O.L.I.D. principle-based web scraper API that uses [DeepL Translate](https://www.deepl.com/), extending its capacities.
+A simple yet very useful S.O.L.I.D. principle-based web scraper API using [DeepL Translate](https://www.deepl.com/) and extending its capacities.
 
 <details>
   <summary>🌐 Supported Languages</summary>
@@ -47,7 +50,7 @@ A simple yet very useful S.O.L.I.D. principle-based web scraper API that uses [D
 
 ## 🙋 Usage
 
-📜 Check [languages.ts](https://github.com/oJPBarbosa/translate-api/src/utils/languages.ts) for the ISO 639-1 standard language codes.
+📜 Check [languages.ts](https://github.com/oJPBarbosa/translate-api/blob/main/src/utils/languages.ts) for the ISO 639-1 standard language codes.
 
 ### Request Example
 
@@ -89,7 +92,7 @@ axios.post('http://translate.api.jpfb.me', {
 		"texts": {
 			"phrase": "Hello world!"
 		}
-	}
+  }
 }
 ```
 
