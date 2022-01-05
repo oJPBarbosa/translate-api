@@ -74,7 +74,7 @@ axios.post('http://translate.api.jpfb.me', {
     target: 'en',
   },
   texts: {
-  phrase: 'Olá mundo!',
+    phrase: 'Olá mundo!',
   },
 })
 .then((response) => {
