@@ -66,24 +66,26 @@ curl -X POST http://translate.api.jpfb.me
 #### JavaScript/Axios
 
 ```js
-const axios = require('axios');
+const axios = require("axios");
 
-axios.post('http://translate.api.jpfb.me', {
-  language: {
-    source: 'pt',
-    target: 'en',
-  },
-  texts: {
-    phrase: 'Olá mundo!',
-  },
-})
-.then((response) => {
-  console.log(response.data);
-})
-.catch((err) => {
-  console.log(err);
-});
+axios
+  .post("http://translate.api.jpfb.me", {
+    language: {
+      source: "pt",
+      target: "en",
+    },
+    texts: {
+      phrase: "Olá mundo!",
+    },
+  })
+  .then((response) => {
+    console.log(response.data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 ```
+
 ### Response Example
 
 ```json
@@ -102,6 +104,7 @@ axios.post('http://translate.api.jpfb.me', {
 - [Node.js](https://nodejs.org/)
 - [Express](https://expressjs.com/)
 - [Puppeteer](https://pptr.dev/)
+- [S.O.L.I.D.](https://wikipedia.org/wiki/SOLID/)
 
 ## ✍️ Author
 
