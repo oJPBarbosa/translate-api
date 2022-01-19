@@ -1,13 +1,15 @@
-import { IScraperProvider } from '../../../providers/IScraperProvider'
-import { TranslateTextRequestDTO, GetTranslationDTO, ITranslation } from './TranslateTextDTO'
-import { languages } from '../../../utils/languages'
-import { Browser, Page, ElementHandle } from 'puppeteer'
-import { ExecuteError } from '../../../exceptions/ExecuteError'
+import { IScraperProvider } from '../../../providers/IScraperProvider';
+import {
+  TranslateTextRequestDTO,
+  GetTranslationDTO,
+  ITranslation,
+} from './TranslateTextDTO';
+import { languages } from '../../../utils/languages';
+import { Browser, Page, ElementHandle } from 'puppeteer';
+import { ExecuteError } from '../../../exceptions/ExecuteError';
 
 export class TranslateTextUseCase {
-  constructor(
-    private scraperProvider: IScraperProvider,
-  ) {}
+  constructor(private scraperProvider: IScraperProvider) {}
 
   async execute(data: TranslateTextRequestDTO): Promise<object> {
     const { language, texts } = data;
@@ -17,16 +19,21 @@ export class TranslateTextUseCase {
       throw new ExecuteError({
         _message: {
           key: 'error',
-          value: 
-          `Invalid ${languages.includes(source) ? 'target' : 'source'} language.`,
+          value: `Invalid ${
+            languages.includes(source) ? 'target' : 'source'
+          } language.`,
         },
         status: 400,
       });
     }
 
-    const keys: string[] = Object.keys(texts).filter((textKey: string) => textKey !== '');
-    const values: string[] = Object.values(texts).filter((textsValue: string) => textsValue !== '');
-    
+    const keys: string[] = Object.keys(texts).filter(
+      (textKey: string) => textKey !== '',
+    );
+    const values: string[] = Object.values(texts).filter(
+      (textsValue: string) => textsValue !== '',
+    );
+
     let browser: Browser = null;
     let page: Page = null;
 
@@ -49,11 +56,13 @@ export class TranslateTextUseCase {
         texts: {},
       };
 
-      (await this.getTranslation({
-        page,
-        language,
-        values,
-      })).forEach((translated: string, index: number) => {
+      (
+        await this.getTranslation({
+          page,
+          language,
+          values,
+        })
+      ).forEach((translated: string, index: number) => {
         translation.texts[keys[index]] = translated;
       });
 
@@ -81,16 +90,22 @@ export class TranslateTextUseCase {
 
     let translation: string[] = [];
     for (const value of values) {
-      await page.goto(`https://deepl.com/translator#${source}/${target}/${value}`);
+      await page.goto(
+        `https://deepl.com/translator#${source}/${target}/${value}`,
+      );
       await page.waitForNetworkIdle();
 
-      const textarea: ElementHandle<HTMLTextAreaElement> = await page.$('[dl-test="translator-target-input"]');
-      
-      const translated: string = (await textarea.getProperty('value')).toString().split(':')[1];
+      const textarea: ElementHandle<HTMLTextAreaElement> = await page.$(
+        '[dl-test="translator-target-input"]',
+      );
+
+      const translated: string = (await textarea.getProperty('value'))
+        .toString()
+        .split(':')[1];
 
       translation.push(translated);
     }
 
-    return translation; 
+    return translation;
   }
 }

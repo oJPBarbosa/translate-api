@@ -1,4 +1,4 @@
-import { Page, Browser} from 'puppeteer'
+import { Page, Browser } from 'puppeteer';
 
 export interface IScraperProvider {
   getBrowser(): Promise<Browser>;

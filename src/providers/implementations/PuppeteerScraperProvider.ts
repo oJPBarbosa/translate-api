@@ -1,13 +1,10 @@
-import { IScraperProvider } from '../IScraperProvider'
-import puppeteer, { Browser, Page } from 'puppeteer'
+import { IScraperProvider } from '../IScraperProvider';
+import puppeteer, { Browser, Page } from 'puppeteer';
 
 export class PuppeteerScraperProvider implements IScraperProvider {
   async getBrowser(): Promise<Browser> {
     const browser: Browser = await puppeteer.launch({
-      args : [
-        '--no-sandbox',
-        '--disable-setuid-sandbox'
-      ],
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
 
     return browser;

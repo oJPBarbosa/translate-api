@@ -8,9 +8,7 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "build",
+    "outDir": "build"
   },
-  "include": [
-    "src/**/*.ts"
-  ]
+  "include": ["src"]
 }

@@ -23,4 +23,4 @@ export const languages: string[] = [
   'sk', // 🇸🇰 Slovak
   'es', // 🇪🇸 Spanish
   'sv', // 🇸🇪 Swedish
-]
+];
