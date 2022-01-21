@@ -5,7 +5,7 @@ export interface ILanguage {
   target: string;
 }
 
-export interface TranslateTextRequestDTO {
+export interface ITranslateTextRequestDTO {
   language: ILanguage;
   texts: object;
 }

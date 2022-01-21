@@ -1,28 +1,35 @@
 import { IScraperProvider } from '../../../providers/IScraperProvider';
 import {
-  TranslateTextRequestDTO,
+  ITranslateTextRequestDTO,
   GetTranslationDTO,
   ITranslation,
 } from './TranslateTextDTO';
+import { analyzeDTO } from '../../../errors/DTOError';
+import { ExecuteError } from '../../../errors/ExecuteError';
 import { languages } from '../../../utils/languages';
 import { Browser, Page, ElementHandle } from 'puppeteer';
-import { ExecuteError } from '../../../exceptions/ExecuteError';
 
 export class TranslateTextUseCase {
   constructor(private scraperProvider: IScraperProvider) {}
 
-  async execute(data: TranslateTextRequestDTO): Promise<object> {
+  async execute(data: ITranslateTextRequestDTO): Promise<object> {
+    try {
+      analyzeDTO(data);
+    } catch (err) {
+      throw new ExecuteError({
+        message: err.message,
+        status: 400,
+      });
+    }
+
     const { language, texts } = data;
     const { source, target } = language;
 
     if (!languages.includes(source) || !languages.includes(target)) {
       throw new ExecuteError({
-        _message: {
-          key: 'error',
-          value: `Invalid ${
-            languages.includes(source) ? 'target' : 'source'
-          } language.`,
-        },
+        message: `Invalid ${
+          languages.includes(source) ? 'target' : 'source'
+        } language.`,
         status: 400,
       });
     }
@@ -34,18 +41,15 @@ export class TranslateTextUseCase {
       (textsValue: string) => textsValue !== '',
     );
 
-    let browser: Browser = null;
-    let page: Page = null;
+    let browser: Browser;
+    let page: Page;
 
     try {
       browser = await this.scraperProvider.getBrowser();
       page = await this.scraperProvider.getPage(browser);
     } catch (err) {
       throw new ExecuteError({
-        _message: {
-          key: 'error',
-          value: 'Unexpected error ocurred during scraper initialization.',
-        },
+        message: 'Unexpected error ocurred during scraper initialization.',
         status: 500,
       });
     }
@@ -75,10 +79,7 @@ export class TranslateTextUseCase {
       await browser.close();
 
       throw new ExecuteError({
-        _message: {
-          key: 'error',
-          value: 'Unexpected error ocurred during translation.',
-        },
+        message: 'Unexpected error ocurred during translation.',
         status: 500,
       });
     }
@@ -88,7 +89,7 @@ export class TranslateTextUseCase {
     const { page, language, values } = data;
     const { source, target } = language;
 
-    let translation: string[] = [];
+    let translation: string[];
     for (const value of values) {
       await page.goto(
         `https://deepl.com/translator#${source}/${target}/${value}`,
