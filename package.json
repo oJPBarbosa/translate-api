@@ -8,7 +8,8 @@
     "start:dev": "ts-node src/server.ts",
     "dev": "ts-node-dev --transpile-only --respawn --ignore-watch node_modules src/server.ts",
     "build": "tsc",
-    "postinstall": "yarn run build"
+    "postinstall": "yarn run build",
+    "lint": "eslint -c .eslintrc.json --ext .ts ./src"
   },
   "dependencies": {
     "cors": "^2.8.5",
