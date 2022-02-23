@@ -48,6 +48,8 @@ export class TranslateTextUseCase {
       browser = await this.scraperProvider.getBrowser();
       page = await this.scraperProvider.getPage(browser);
     } catch (err) {
+      await browser?.close();
+
       throw new ExecuteError({
         message: 'Unexpected error ocurred during scraper initialization.',
         status: 500,
@@ -89,7 +91,7 @@ export class TranslateTextUseCase {
     const { page, language, values } = data;
     const { source, target } = language;
 
-    let translation: string[];
+    const translation: string[] = [];
     for (const value of values) {
       await page.goto(
         `https://deepl.com/translator#${source}/${target}/${value}`,
